@@ -178,4 +178,19 @@ document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
   });
 </script>
 </body>
+  <script>
+document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
+  option.addEventListener('change', function() {
+    const totalPrice = document.getElementById('totalPrice');
+
+    if (this.value === 'المنزل') {
+      totalPrice.textContent = '3700 DA';
+    }
+
+    if (this.value === 'المكتب') {
+      totalPrice.textContent = '3400 DA';
+    }
+  });
+});
+</script>
 </html>
