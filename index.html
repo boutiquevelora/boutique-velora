@@ -107,8 +107,10 @@
           <label for="notes">ملاحظات إضافية</label>
           <textarea id="notes" name="notes" placeholder="اختياري"></textarea>
 <div class="total-box">
-  <strong>الإجمالي:</strong>
-  <span id="totalPrice">2900 DA</span>
+  <div>سعر المنتج: <strong>2900 DA</strong></div>
+  <div>سعر التوصيل: <strong id="deliveryPrice">-</strong></div>
+  <hr>
+  <div>الإجمالي: <strong id="totalPrice">2900 DA</strong></div>
 </div>
           <button id="submitBtn" type="submit">تأكيد الطلب 🌸</button>
           <div class="error" id="errorBox"></div>
@@ -132,7 +134,15 @@ const totalPrice = document.getElementById("totalPrice");
 
 document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
   option.addEventListener("change", function() {
-    if (this.value === "المنزل") {
+    if (this.value === 'المنزل') {
+  document.getElementById('deliveryPrice').textContent = '800 DA';
+  totalPrice.textContent = '3700 DA';
+}
+
+if (this.value === 'المكتب') {
+  document.getElementById('deliveryPrice').textContent = '500 DA';
+  totalPrice.textContent = '3400 DA';
+}
       totalPrice.textContent = "3700 DA";
     } else if (this.value === "المكتب") {
       totalPrice.textContent = "3400 DA";
