@@ -128,7 +128,17 @@
 <script>
   // ضع هنا رابط Google Apps Script بعد نشره كـ Web App
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKYe4DCpMZltdHKYTkQNdl_1Ba8eW5dMI3SF0rzlAVO8SitjcTCPr9O8Qqb-_47CI/exec";
+const totalPrice = document.getElementById("totalPrice");
 
+document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
+  option.addEventListener("change", function() {
+    if (this.value === "المنزل") {
+      totalPrice.textContent = "3700 DA";
+    } else if (this.value === "المكتب") {
+      totalPrice.textContent = "3400 DA";
+    }
+  });
+});
   const form = document.getElementById("orderForm");
   const btn = document.getElementById("submitBtn");
   const errorBox = document.getElementById("errorBox");
