@@ -157,7 +157,19 @@ document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
     btn.textContent = "جاري تسجيل الطلب...";
 
     const data = Object.fromEntries(new FormData(form).entries());
-    data.createdAt = new Date().toISOString();
+data.createdAt = new Date().toISOString();
+
+data.productPrice = 2900;
+
+if (data.delivery === "المنزل") {
+  data.deliveryPrice = 800;
+} else if (data.delivery === "المكتب") {
+  data.deliveryPrice = 500;
+} else {
+  data.deliveryPrice = 0;
+}
+
+data.totalPrice = data.productPrice + data.deliveryPrice;
 
     try {
       await fetch(SCRIPT_URL, {
