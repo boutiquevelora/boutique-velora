@@ -1,218 +1,647 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boutique Velora | تأكيد الطلب</title>
+
   <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;font-family:Arial,"Tahoma",sans-serif;
-      background:linear-gradient(135deg,#fff7fa,#f8eef5);
-      color:#3d3037;
+    * {
+      box-sizing: border-box;
     }
-    .container{max-width:520px;margin:auto;padding:20px 14px 40px}
-    .card{
-      background:#fff;border-radius:24px;padding:22px;
-      box-shadow:0 12px 35px rgba(80,40,60,.10);
+
+    body {
+      margin: 0;
+      font-family: Arial, Tahoma, sans-serif;
+      background: linear-gradient(135deg, #fff7fa, #f8eef5);
+      color: #3d3037;
     }
-    .brand{text-align:center;font-size:26px;font-weight:800;color:#b96d91}
-    .subtitle{text-align:center;color:#8b7b83;margin:7px 0 18px}
-    .product{
-      display:flex;align-items:center;gap:14px;
-      background:#fff5f8;border-radius:18px;padding:14px;margin-bottom:22px
+
+    .container {
+      max-width: 520px;
+      margin: auto;
+      padding: 20px 14px 40px;
     }
-    .product-icon{
-      width:72px;height:72px;border-radius:16px;background:#f8c8d8;
-      display:flex;align-items:center;justify-content:center;font-size:32px
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 12px 35px rgba(80, 40, 60, 0.10);
     }
-    .product h2{font-size:17px;margin:0 0 7px}
-    .price{font-weight:800;color:#b45f87;font-size:19px}
-    label{display:block;font-weight:700;margin:14px 0 7px}
-    input,textarea,select{
-      width:100%;padding:14px;border:1px solid #eadde3;
-      border-radius:13px;background:#fff;font-size:15px;outline:none;
+
+    .brand {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: #b96d91;
     }
-    input:focus,textarea:focus,select:focus{border-color:#d99ab5;box-shadow:0 0 0 3px #fce8f0}
-    textarea{min-height:80px;resize:vertical}
-    .delivery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .delivery label{
-      margin:0;border:1px solid #eadde3;border-radius:13px;padding:13px;
-      cursor:pointer;font-weight:600;text-align:center
+
+    .subtitle {
+      text-align: center;
+      color: #8b7b83;
+      margin: 7px 0 18px;
     }
-    .delivery input{display:none}
-    .delivery label:has(input:checked){
-      border-color:#c87999;background:#fff0f5;color:#a95078
+
+    .product {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff5f8;
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 22px;
     }
-    button{
-      width:100%;border:0;border-radius:15px;padding:16px;margin-top:20px;
-      background:#c87999;color:#fff;font-size:17px;font-weight:800;cursor:pointer
+
+    .product-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      background: #f8c8d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    button:disabled{opacity:.6;cursor:not-allowed}
-    .note{text-align:center;color:#999;font-size:12px;margin-top:13px}
-    .success{display:none;text-align:center;padding:30px 10px}
-    .success .icon{font-size:54px}
-    .success h2{color:#a65378}
-    .error{display:none;background:#fff0f0;color:#a33;padding:12px;border-radius:12px;margin-top:12px;text-align:center}
-    @media(max-width:380px){.delivery{grid-template-columns:1fr}}
+
+    .product-icon img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .product h2 {
+      font-size: 17px;
+      margin: 0 0 7px;
+    }
+
+    .price {
+      font-weight: 800;
+      color: #b45f87;
+      font-size: 19px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 14px 0 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #eadde3;
+      border-radius: 13px;
+      background: #fff;
+      font-size: 15px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #d99ab5;
+      box-shadow: 0 0 0 3px #fce8f0;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .delivery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .delivery label {
+      margin: 0;
+      border: 1px solid #eadde3;
+      border-radius: 13px;
+      padding: 13px;
+      cursor: pointer;
+      font-weight: 600;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .delivery input {
+      display: none;
+    }
+
+    .delivery label:has(input:checked) {
+      border-color: #c87999;
+      background: #fff0f5;
+      color: #a95078;
+    }
+
+    .total-box {
+      background: #fff7fa;
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 18px;
+      line-height: 2;
+    }
+
+    .total-box hr {
+      border: 0;
+      border-top: 1px solid #eadde3;
+      margin: 7px 0;
+    }
+
+    .total-final {
+      font-size: 19px;
+      color: #a95078;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 16px;
+      margin-top: 20px;
+      background: #c87999;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .note {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 13px;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .success .icon {
+      font-size: 54px;
+    }
+
+    .success h2 {
+      color: #a65378;
+    }
+
+    .error {
+      display: none;
+      background: #fff0f0;
+      color: #a33;
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 380px) {
+      .delivery {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div id="formView">
-        <div class="brand">Boutique Velora 🌸</div>
-        <div class="subtitle">أكمل معلوماتك لتأكيد طلبك</div>
 
+<body>
+
+  <div class="container">
+
+    <div class="card">
+
+      <!-- FORM -->
+      <div id="formView">
+
+        <div class="brand">
+          Boutique Velora 🌸
+        </div>
+
+        <div class="subtitle">
+          أكمل معلوماتك لتأكيد طلبك
+        </div>
+
+        <!-- PRODUCT -->
         <div class="product">
+
           <div class="product-icon">
-  <img src="velora.png.png" alt="ماكينة حلاقة نسائية"
-       style="width: 80px; height: 80px; object-fit: contain; display: block; margin: auto; border-radius: 20px;">
-</div>
+            <img
+              src="velora.png.png"
+              alt="ماكينة حلاقة نسائية"
+            >
+          </div>
+
           <div>
             <h2>مكينة الحلاقة النسائية</h2>
             <div class="price">2900 DA</div>
           </div>
+
         </div>
 
+        <!-- ORDER FORM -->
         <form id="orderForm">
-          <label for="fullName">الاسم واللقب *</label>
-          <input id="fullName" name="fullName" type="text" placeholder="مثال: امال الزيدي" required>
 
-          <label for="phone">رقم الهاتف *</label>
-          <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="05 / 06 / 07 xx xx xx xx" required>
+          <label for="fullName">
+            الاسم واللقب *
+          </label>
 
-          <label for="wilaya">الولاية *</label>
-          <input id="wilaya" name="wilaya" type="text" placeholder="مثال: Setif" required>
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            placeholder="مثال: امال الزيدي"
+            required
+          >
 
-          <label for="commune">البلدية *</label>
-          <input id="commune" name="commune" type="text" placeholder="مثال: Al-Alama" required>
+          <label for="phone">
+            رقم الهاتف *
+          </label>
 
-          <label for="address">العنوان *</label>
-          <textarea id="address" name="address" placeholder="اكتب الحي، الشارع، أو أقرب نقطة معروفة" required></textarea>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            placeholder="05 / 06 / 07 xx xx xx xx"
+            required
+          >
 
-          <label>طريقة التوصيل *</label>
-<div class="delivery">
-  <label>
-    <input type="radio" name="delivery" value="المنزل" required>
-    🏠 التوصيل للمنزل — 800 DA
-  </label>
+          <label for="wilaya">
+            الولاية *
+          </label>
 
-  <label>
-    <input type="radio" name="delivery" value="المكتب">
-    🏢 التوصيل للمكتب — 500 DA
-  </label>
-</div>
+          <input
+            id="wilaya"
+            name="wilaya"
+            type="text"
+            placeholder="مثال: سطيف"
+            required
+          >
 
-          <label for="notes">ملاحظات إضافية</label>
-          <textarea id="notes" name="notes" placeholder="اختياري"></textarea>
-<div class="total-box">
-  <div>سعر المنتج: <strong>2900 DA</strong></div>
-  <div>سعر التوصيل: <strong id="deliveryPrice">-</strong></div>
-  <hr>
-  <div>الإجمالي: <strong id="totalPrice">2900 DA</strong></div>
-</div>
-          <button id="submitBtn" type="submit">تأكيد الطلب 🌸</button>
-          <div class="error" id="errorBox"></div>
-          <div class="note">لن نستخدم معلوماتك إلا لمعالجة طلبك والتواصل معك.</div>
+          <label for="commune">
+            البلدية *
+          </label>
+
+          <input
+            id="commune"
+            name="commune"
+            type="text"
+            placeholder="مثال: العلمة"
+            required
+          >
+
+          <label for="address">
+            العنوان *
+          </label>
+
+          <textarea
+            id="address"
+            name="address"
+            placeholder="اكتب الحي، الشارع، أو أقرب نقطة معروفة"
+            required
+          ></textarea>
+
+          <!-- DELIVERY -->
+          <label>
+            طريقة التوصيل *
+          </label>
+
+          <div class="delivery">
+
+            <label>
+              <input
+                type="radio"
+                name="delivery"
+                value="المنزل"
+                required
+              >
+              🏠 التوصيل للمنزل — 800 DA
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="delivery"
+                value="المكتب"
+              >
+              🏢 التوصيل للمكتب — 500 DA
+            </label>
+
+          </div>
+
+          <label for="notes">
+            ملاحظات إضافية
+          </label>
+
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="اختياري"
+          ></textarea>
+
+          <!-- TOTAL -->
+          <div class="total-box">
+
+            <div>
+              سعر المنتج:
+              <strong>2900 DA</strong>
+            </div>
+
+            <div>
+              سعر التوصيل:
+              <strong id="deliveryPrice">-</strong>
+            </div>
+
+            <hr>
+
+            <div class="total-final">
+              الإجمالي:
+              <strong id="totalPrice">2900 DA</strong>
+            </div>
+
+          </div>
+
+          <button
+            id="submitBtn"
+            type="submit"
+          >
+            تأكيد الطلب 🌸
+          </button>
+
+          <div
+            class="error"
+            id="errorBox"
+          ></div>
+
+          <div class="note">
+            لن نستخدم معلوماتك إلا لمعالجة طلبك والتواصل معك.
+          </div>
+
         </form>
+
       </div>
 
-      <div class="success" id="successView">
-        <div class="icon">✅</div>
-        <h2>تم تسجيل طلبك بنجاح</h2>
-        <p>شكراً لثقتك في Boutique Velora 🌸</p>
-        <p>سنتواصل معك لتأكيد الطلب.</p>
+      <!-- SUCCESS -->
+      <div
+        class="success"
+        id="successView"
+      >
+
+        <div class="icon">
+          ✅
+        </div>
+
+        <h2>
+          تم تسجيل طلبك بنجاح
+        </h2>
+
+        <p>
+          شكراً لثقتك في Boutique Velora 🌸
+        </p>
+
+        <p>
+          سنتواصل معك لتأكيد الطلب.
+        </p>
+
       </div>
+
     </div>
+
   </div>
 
-<script>
-  // ضع هنا رابط Google Apps Script بعد نشره كـ Web App
-  const SCRIPT_URL = "https://hook.eu1.make.com/cpv583ix2bhhzzre6djgdqepgs6l3gpr";
-const totalPrice = document.getElementById("totalPrice");
 
-document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
-  option.addEventListener("change", function() {
-    if (this.value === 'المنزل') {
-  document.getElementById('deliveryPrice').textContent = '800 DA';
-  totalPrice.textContent = '3700 DA';
-}
+  <script>
 
-if (this.value === 'المكتب') {
-  document.getElementById('deliveryPrice').textContent = '500 DA';
-  totalPrice.textContent = '3400 DA';
-}
-      totalPrice.textContent = "3700 DA";
-    } else if (this.value === "المكتب") {
-      totalPrice.textContent = "3400 DA";
-    }
-  });
-});
-  const form = document.getElementById("orderForm");
-  const btn = document.getElementById("submitBtn");
-  const errorBox = document.getElementById("errorBox");
+    /*
+      ==========================================
+      MAKE WEBHOOK
+      ==========================================
+    */
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    errorBox.style.display = "none";
+    const WEBHOOK_URL =
+      "https://hook.eu1.make.com/cpv583ix2bhhzzre6djgdqepgs6l3gpr";
 
-    if (SCRIPT_URL.includes("ضع_رابط")) {
-      errorBox.textContent = "لم يتم ربط الصفحة بقاعدة الطلبات بعد. اتبع خطوات الإعداد.";
-      errorBox.style.display = "block";
-      return;
-    }
 
-    btn.disabled = true;
-    btn.textContent = "جاري تسجيل الطلب...";
+    /*
+      ==========================================
+      ELEMENTS
+      ==========================================
+    */
 
-    const data = Object.fromEntries(new FormData(form).entries());
-data.createdAt = new Date().toISOString();
+    const form =
+      document.getElementById("orderForm");
 
-data.productPrice = 2900;
+    const submitBtn =
+      document.getElementById("submitBtn");
 
-if (data.delivery === "المنزل") {
-  data.deliveryPrice = 800;
-} else if (data.delivery === "المكتب") {
-  data.deliveryPrice = 500;
-} else {
-  data.deliveryPrice = 0;
-}
+    const errorBox =
+      document.getElementById("errorBox");
 
-data.totalPrice = data.productPrice + data.deliveryPrice;
+    const deliveryPrice =
+      document.getElementById("deliveryPrice");
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type":"text/plain;charset=utf-8"},
-        body: JSON.stringify(data)
+    const totalPrice =
+      document.getElementById("totalPrice");
+
+
+    /*
+      ==========================================
+      DELIVERY PRICE
+      ==========================================
+    */
+
+    document
+      .querySelectorAll('input[name="delivery"]')
+      .forEach(function(option) {
+
+        option.addEventListener("change", function() {
+
+          if (this.value === "المنزل") {
+
+            deliveryPrice.textContent =
+              "800 DA";
+
+            totalPrice.textContent =
+              "3700 DA";
+
+          }
+
+          else if (this.value === "المكتب") {
+
+            deliveryPrice.textContent =
+              "500 DA";
+
+            totalPrice.textContent =
+              "3400 DA";
+
+          }
+
+        });
+
       });
 
-      document.getElementById("formView").style.display = "none";
-      document.getElementById("successView").style.display = "block";
-    } catch (err) {
-      errorBox.textContent = "حدث خطأ. تأكد من اتصال الإنترنت وحاول مرة أخرى.";
-      errorBox.style.display = "block";
-      btn.disabled = false;
-      btn.textContent = "تأكيد الطلب 🌸";
-    }
-  });
-</script>
+
+    /*
+      ==========================================
+      SEND ORDER TO MAKE
+      ==========================================
+    */
+
+    form.addEventListener("submit", async function(e) {
+
+      e.preventDefault();
+
+      errorBox.style.display = "none";
+
+      submitBtn.disabled = true;
+
+      submitBtn.textContent =
+        "جاري إرسال الطلب...";
+
+
+      /*
+        Get form data
+      */
+
+      const formData =
+        new FormData(form);
+
+
+      /*
+        Create order object
+      */
+
+      const order = {
+
+        fullName:
+          formData.get("fullName") || "",
+
+        phone:
+          formData.get("phone") || "",
+
+        wilaya:
+          formData.get("wilaya") || "",
+
+        commune:
+          formData.get("commune") || "",
+
+        address:
+          formData.get("address") || "",
+
+        delivery:
+          formData.get("delivery") || "",
+
+        notes:
+          formData.get("notes") || "",
+
+        product:
+          "مكينة الحلاقة النسائية",
+
+        productPrice:
+          2900,
+
+        deliveryPrice:
+          formData.get("delivery") === "المنزل"
+            ? 800
+            : 500,
+
+        totalPrice:
+          formData.get("delivery") === "المنزل"
+            ? 3700
+            : 3400,
+
+        createdAt:
+          new Date().toLocaleString("fr-FR")
+
+      };
+
+
+      /*
+        Convert to form data
+        Make Custom Webhook accepts
+        application/x-www-form-urlencoded
+      */
+
+      const sendData =
+        new URLSearchParams();
+
+
+      Object.keys(order).forEach(function(key) {
+
+        sendData.append(
+          key,
+          order[key]
+        );
+
+      });
+
+
+      /*
+        Send to Make
+      */
+
+      try {
+
+        await fetch(
+          WEBHOOK_URL,
+          {
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: sendData
+          }
+        );
+
+
+        /*
+          Show success
+        */
+
+        document
+          .getElementById("formView")
+          .style.display = "none";
+
+        document
+          .getElementById("successView")
+          .style.display = "block";
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        errorBox.textContent =
+          "حدث خطأ أثناء إرسال الطلب. تأكد من اتصال الإنترنت وحاول مرة أخرى.";
+
+        errorBox.style.display =
+          "block";
+
+        submitBtn.disabled =
+          false;
+
+        submitBtn.textContent =
+          "تأكيد الطلب 🌸";
+
+      }
+
+    });
+
+  </script>
+
 </body>
-  <script>
-document.querySelectorAll('input[name="delivery"]').forEach(function(option) {
-  option.addEventListener('change', function() {
-    const totalPrice = document.getElementById('totalPrice');
-
-    if (this.value === 'المنزل') {
-      totalPrice.textContent = '3700 DA';
-    }
-
-    if (this.value === 'المكتب') {
-      totalPrice.textContent = '3400 DA';
-    }
-  });
-});
-</script>
 </html>
